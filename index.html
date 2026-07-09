@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>충북 중심에 서다</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #eef3f7; }
+  .wrap {
+    max-width: 986px;   /* 이미지 폭 기준, 필요시 조정 */
+    margin: 0 auto;
+    position: relative;
+  }
+  .slide {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;  /* 부드럽게 전환 */
+  }
+  .slide.active {
+    opacity: 1;
+    position: relative;  /* 활성 슬라이드가 높이를 잡아줌 */
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <img class="slide active" src="1.png" alt="충북 안내 1">
+    <img class="slide" src="2.png" alt="충북 안내 2">
+    <img class="slide" src="3.png" alt="충북 안내 3">
+    <img class="slide" src="4.png" alt="충북 안내 4">
+    <img class="slide" src="5.png" alt="충북 안내 5">
+  </div>
+
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var current = 0;
+  var INTERVAL = 5000; // 30초 (밀리초 단위, 원하면 숫자만 바꾸면 됨)
+
+  setInterval(function () {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, INTERVAL);
+</script>
+</body>
+</html>
